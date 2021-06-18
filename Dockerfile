@@ -52,4 +52,5 @@ ENTRYPOINT ["dumb-init", "/usr/local/bin/ocaml-ci-service"]
 ENV OCAMLRUNPARAM=a=2
 # Enable experimental for docker manifest support
 ENV DOCKER_CLI_EXPERIMENTAL=enabled
+RUN apt-get install ca-certificates -y  # https://github.com/mirage/ocaml-conduit/issues/388
 COPY --from=build /src/_build/install/default/bin/ocaml-ci-service /src/_build/install/default/bin/ocaml-ci-solver /usr/local/bin/
